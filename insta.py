@@ -8,9 +8,8 @@ def extract_dp():
     try:
         response = urllib.request.urlopen(url).read()
         soup = bs(response, 'html.parser')
-        meta = soup.find_all('meta', {'property': 'og:image'})
+        meta = soup.find_all('meta', {'property': 'og:image'})  # extracts meta tag for property og:image (profile pic)
         img_src = meta[0]['content']
-        # imgURL = imgURL.replace('s150x150', 's720x720')
         name = url.split('/')[-2]
         img_name = f'{name}.jpg'
         urllib.request.urlretrieve(img_src, img_name)
